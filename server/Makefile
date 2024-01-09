@@ -7,8 +7,8 @@ build:
 test:
 	@ go test ./...
 
-seed:
-	@go run cmd/seed/main.go
+db:
+	@go run cmd/seed/main.go $(from)
 
 drop:
 	@go run cmd/drop/main.go

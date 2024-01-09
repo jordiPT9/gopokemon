@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipo Pokémon</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: rgb(223, 223, 223);
+            margin: 20px;
+            background-color: #14141f;
+            display: flex;
+            justify-content: center;
+        }
+
+        .pokemon-card {
+            background-color: #2e2e47;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px;
+            width: 500px;
+            box-shadow: 0px 0px 10px rgb(0,0,0,1);
+        }
+
+        .stat-bar {
+            display: flex;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            width: 60px;
+            margin-right: 10px;
+            text-align: right;
+        }
+
+        .stat-value {
+            height: 10px;
+            background-color: #80df78;
+            border-radius: 3px;
+            margin: 0;
+            border: 1px solid rgba(0,0,0,.55);
+        }
+    </style>
+</head>
+<body>
+    <div class="pokemon-card">
+        <div style="font-size: 20PX; font-weight: bold; margin-bottom: 10px;">Emboar</div>
+        <div class="stat-bar">
+            <span class="stat-label">Hp</span>
+            <span class="stat-label">110</span>
+            <div class="stat-value" style="width: calc(110 / 255 * 100%);"></div>
+        </div>
+        <div class="stat-bar">
+            <span class="stat-label">Attack</span>
+            <span class="stat-label">123</span>
+            <div class="stat-value" style="width: calc(123 / 255 * 100%);"></div>
+        </div>
+        <div class="stat-bar">
+            <span class="stat-label">Defense</span>
+            <span class="stat-label">65</span>
+            <div class="stat-value" style="width: calc(65 / 255 * 100%);"></div>
+        </div>
+        <div class="stat-bar">
+            <span class="stat-label">Sp. Atk</span>
+            <span class="stat-label">100</span>
+            <div class="stat-value" style="width: calc(100 / 255 * 100%);"></div>
+        </div>
+        <div class="stat-bar">
+            <span class="stat-label">Sp. Def</span>
+            <span class="stat-label">65</span>
+            <div class="stat-value" style="width: calc(65 / 255 * 100%);"></div>
+        </div>
+        <div class="stat-bar">
+            <span class="stat-label">Speed</span>
+            <span class="stat-label">65</span>
+            <div class="stat-value" style="width: calc(65 / 255 * 100%);"></div>
+        </div>
+        <div class="stat-bar">
+            <span class="stat-label">Total</span>
+            <span class="stat-label" style="font-weight: bold;">528</span>
+        </div>
+    </div>
+</body>
+</html>
+    
