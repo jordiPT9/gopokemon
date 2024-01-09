@@ -1,0 +1,20 @@
+{
+    "printWidth": 120,
+    "tabWidth": 2,
+    "useTabs": false,
+    "jsxBracketSameLine": false,
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "semi": true,
+    "bracketSpacing": true,
+    "arrowParens": "always",
+    "singleAttributePerLine": true,
+    "overrides": [
+        {
+            "files": "*.js",
+            "options": {
+                "spaceBeforeConditional": true
+            }
+        }
+    ]
+}
