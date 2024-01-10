@@ -1,83 +1,85 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './PokemonCard.css';
 
-const PokemonCard = () => {
-  const calculateColor = (value) => {
-    const constant = 200
-    const stat = (value * constant) / 255
-    if (stat < (constant/2)) {
-      return `rgb(${(constant - stat * 2)*2}, ${(stat * 2)*2}, ${0})`;
-    } else if (stat >= (constant/2)) {
-      return `rgb(${0}, ${((constant - stat) * 2)}, ${(((stat - (constant/2)) * 2))*3})`;
-    }
+const PokemonCard = ({ name, hp, atk, def, spAtk, spDef, speed, total }) => {
+  const getBgColor = (statValue) => {
+    const max = 200;
+    const value = (statValue * max) / 255;
+
+    let r = (max - value * 2) * 2 + (max - value * 2) * 2 * 0.5;
+    let g = value * 2 + value * 2 * 0.5 + 0;
+    let b = g >= 255 ? value : 0;
+
+    return `rgb(${r}, ${g}, ${b})`;
   };
 
   return (
     <div className="pokemon-card">
-      <div className="pokemon-name">Emboar</div>
+      <div className="pokemon-name">{name}</div>
       <div className="stat-wrapper">
         <span className="stat-label">Hp</span>
-        <span className="stat-value">110</span>
+        <span className="stat-value">{hp}</span>
         <div
           className="stat-bar"
           style={{
-            width: 'calc(160 / 255 * 450px)',
-            backgroundColor: calculateColor(160),
+            width: `calc(${hp} / 255 * 450px)`,
+            backgroundColor: getBgColor(hp),
           }}
         ></div>
       </div>
       <div className="stat-wrapper">
         <span className="stat-label">Attack</span>
-        <span className="stat-value">123</span>
+        <span className="stat-value">{atk}</span>
         <div
           className="stat-bar"
           style={{
-            width: 'calc(123 / 255 * 450px)',
-            backgroundColor: calculateColor(123),
+            width: `calc(${atk} / 255 * 450px)`,
+            backgroundColor: getBgColor(atk),
           }}
         ></div>
       </div>
       <div className="stat-wrapper">
         <span className="stat-label">Defense</span>
-        <span className="stat-value">65</span>
+        <span className="stat-value">{def}</span>
         <div
           className="stat-bar"
           style={{
-            width: 'calc(65 / 255 * 450px)',
-            backgroundColor: calculateColor(65),
+            width: `calc(${def} / 255 * 450px)`,
+            backgroundColor: getBgColor(def),
           }}
         ></div>
       </div>
       <div className="stat-wrapper">
         <span className="stat-label">Sp. Atk</span>
-        <span className="stat-value">100</span>
+        <span className="stat-value">{spAtk}</span>
         <div
           className="stat-bar"
           style={{
-            width: 'calc(100 / 255 * 450px)',
-            backgroundColor: calculateColor(100),
+            width: `calc(${spAtk} / 255 * 450px)`,
+            backgroundColor: getBgColor(spAtk),
           }}
         ></div>
       </div>
       <div className="stat-wrapper">
         <span className="stat-label">Sp. Def</span>
-        <span className="stat-value">65</span>
+        <span className="stat-value">{spDef}</span>
         <div
           className="stat-bar"
           style={{
-            width: 'calc(65 / 255 * 450px)',
-            backgroundColor: calculateColor(65),
+            width: `calc(${spDef} / 255 * 450px)`,
+            backgroundColor: getBgColor(spDef),
           }}
         ></div>
       </div>
       <div className="stat-wrapper">
         <span className="stat-label">Speed</span>
-        <span className="stat-value">65</span>
+        <span className="stat-value">{speed}</span>
         <div
           className="stat-bar"
           style={{
-            width: 'calc(65 / 255 * 450px)',
-            backgroundColor: calculateColor(65),
+            width: `calc(${speed} / 255 * 450px)`,
+            backgroundColor: getBgColor(speed),
           }}
         ></div>
       </div>
@@ -86,10 +88,32 @@ const PokemonCard = () => {
         style={{ fontWeight: 'bold' }}
       >
         <span className="stat-label">Total</span>
-        <span className="stat-value">528</span>
+        <span className="stat-value">{total}</span>
       </div>
     </div>
   );
+};
+
+PokemonCard.propTypes = {
+  name: PropTypes.string,
+  hp: PropTypes.number,
+  atk: PropTypes.number,
+  def: PropTypes.number,
+  spAtk: PropTypes.number,
+  spDef: PropTypes.number,
+  speed: PropTypes.number,
+  total: PropTypes.number,
+};
+
+PokemonCard.defaultProps = {
+  name: 'Unknown',
+  hp: 0,
+  atk: 0,
+  def: 0,
+  spAtk: 0,
+  spDef: 0,
+  speed: 0,
+  total: 0,
 };
 
 export default PokemonCard;
