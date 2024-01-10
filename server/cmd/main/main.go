@@ -12,6 +12,7 @@ import (
 
 func main() {
 	database.Init()
+
 	list := []string{
 		"Gothorita",
 		"Watchog",
