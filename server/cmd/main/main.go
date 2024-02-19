@@ -14,12 +14,12 @@ func main() {
 	database.Init()
 
 	list := []string{
-		"Gothorita",
+		"Gothitelle",
 		"Watchog",
 		"vanillish",
 		"cofagrigus",
 		"zebstrika",
-		"maractus",
+		//"maractus",
 		"stoutland",
 		"emboar",
 		"galvantula",
@@ -29,11 +29,10 @@ func main() {
 		"stunfisk",
 		"mienfoo",
 		"lampent",
-		// "Sawsbuck",
+		"Sawsbuck",
 		"seismitoad",
 		"swoobat",
-		"cinccino",
-		"gothitelle",
+		//"cinccino",
 		"CHANDELURE",
 		"golurk",
 	}
@@ -52,10 +51,20 @@ func main() {
 		printPokemonList(team, true)
 	}
 
-	pokemons, _ := database.FindTopMaxStat(list, types.SpAtk, 20)
-	fmt.Println("")
-	fmt.Println("TOP MAX SPATK")
-	printPokemonList(pokemons, false)
+	//pokemons, _ := database.FindTopMaxStat(list, types.SpAtk, 20)
+	//fmt.Println("")
+	//fmt.Println("TOP MAX SPATK")
+	//printPokemonList(pokemons, false)
+	pokemons := []string{
+		"Emboar",
+		"zebstrika",
+		"stoutland",
+		"seismitoad",
+		"chandelure",
+		"sawsbuck",
+	}
+	lstss, _ := database.FindAll(pokemons)
+	printPokemonList(types.PokemonList{List: lstss}, false)
 }
 
 func findBestTeam(pkmnList []types.Pokemon) (types.PokemonList, []types.PokemonList) {
@@ -88,7 +97,7 @@ func findBestTeam(pkmnList []types.Pokemon) (types.PokemonList, []types.PokemonL
 								TotalWeaknesses: currentTotalWeaknesses,
 							}
 
-							if hasCriticalWeakness(currentTeam, false) {
+							if teamHasCriticalWeakness(currentTeam, false) {
 								continue
 							}
 
@@ -116,11 +125,11 @@ func findBestTeam(pkmnList []types.Pokemon) (types.PokemonList, []types.PokemonL
 	fmt.Println("Nº iterations: ", counter)
 	fmt.Println("Best team score: ", bestScore0)
 	fmt.Println("")
-	hasCriticalWeakness(bestTeam.List, true)
+	teamHasCriticalWeakness(bestTeam.List, true)
 	return bestTeam, bestTeams
 }
 
-func hasCriticalWeakness(team []types.Pokemon, print bool) bool {
+func teamHasCriticalWeakness(team []types.Pokemon, print bool) bool {
 	totalAgainstNormal := []int{0, 0}
 	totalAgainstFire := []int{0, 0}
 	totalAgainstWater := []int{0, 0}
@@ -180,27 +189,14 @@ func hasCriticalWeakness(team []types.Pokemon, print bool) bool {
 		"totalAgainstFairy":    totalAgainstFairy,
 	}
 
-	// for key, value := range table {
-	// 	if print == true {
-	// 		line := ""
-	// 		if value[0] >= 2 && value[1] == 0 {
-	// 			line = fmt.Sprintf("%s \t*%v - %v", key, value[0], value[1])
-	// 		} else if value[0] >= 3 && value[1] == 1 {
-	// 			line = fmt.Sprintf("%s \t*%v - %v", key, value[0], value[1])
-	// 		} else {
-	// 			line = fmt.Sprintf("%s \t%v - %v", key, value[0], value[1])
-	// 		}
-	// 		fmt.Println(line)
-	// 	}
-	// }
 	if print == true {
 		fmt.Println(table)
 	}
 
 	for _, value := range table {
-		if value[0] >= 2 && value[1] == 0 {
+		if value[0] >= 3 && value[1] == 0 {
 			return true
-		} else if value[0] >= 3 && value[1] == 1 {
+		} else if value[0] >= 4 && value[1] == 1 {
 			return true
 		}
 	}
